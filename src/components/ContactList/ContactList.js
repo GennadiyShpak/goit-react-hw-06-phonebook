@@ -43,12 +43,9 @@ const getFilterName = (contacts, filter) => {
   );
 };
 
-const mapStateToProps = state => {
-  const { contacts, filter } = state.phonebook;
-  return {
-    contacts: getFilterName(contacts, filter),
-  };
-};
+const mapStateToProps = ({ phonebook: { contacts, filter } }) => ({
+  contacts: getFilterName(contacts, filter),
+});
 
 const mapDispatchToProps = dispatch => ({
   onDelete: id => dispatch(actions.deleteContact(id)),
