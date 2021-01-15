@@ -10,6 +10,10 @@ const deleteContact = contactid => ({
   type: types.DELETE,
   payload: contactid,
 });
+const filterContact = value => ({
+  type: types.CHANGE_FILTER,
+  payload: value,
+});
 
-const actions = { addContact, deleteContact };
+const actions = { addContact, deleteContact, filterContact };
 export default actions;

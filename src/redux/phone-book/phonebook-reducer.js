@@ -7,11 +7,9 @@ import initialContactList from '../../components/initialContactList.json';
 const contactsReducer = (state = initialContactList, { type, payload }) => {
   switch (type) {
     case types.ADD: {
-      console.log(state);
       return [...state, payload];
     }
     case types.DELETE: {
-      console.log(state);
       return state.filter(({ id }) => id !== payload);
     }
     default:
@@ -19,7 +17,16 @@ const contactsReducer = (state = initialContactList, { type, payload }) => {
   }
 };
 
-const filterReducer = (state = '', actions = '') => state;
+const filterReducer = (state = '', { type, payload }) => {
+  switch (type) {
+    case types.CHANGE_FILTER: {
+      return payload;
+    }
+
+    default:
+      return state;
+  }
+};
 
 const phonebookReducer = combineReducers({
   contacts: contactsReducer,

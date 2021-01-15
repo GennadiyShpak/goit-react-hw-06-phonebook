@@ -5,8 +5,7 @@ import propTypes from 'prop-types';
 import s from './Contats.module.css';
 import actions from '../../redux/phone-book/phonebook-actions';
 
-function ContactList({ contacts }, onDelete) {
-  console.log(onDelete);
+function ContactList({ contacts, onDelete }) {
   if (contacts.length === 0) {
     return null;
   }
@@ -17,7 +16,13 @@ function ContactList({ contacts }, onDelete) {
           <p>
             {name}: {number}
           </p>
-          <button type="button" onClick={onDelete} className={s.contactBtn}>
+          <button
+            type="button"
+            onClick={() => {
+              onDelete(id);
+            }}
+            className={s.contactBtn}
+          >
             Delete
           </button>
         </li>
@@ -31,9 +36,19 @@ ContactList.propTypes = {
   onDelete: propTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  contacts: state.phonebook.contacts,
-});
+const getFilterName = (contacts, filter) => {
+  const normalizedName = filter.toLowerCase();
+  return contacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizedName),
+  );
+};
+
+const mapStateToProps = state => {
+  const { contacts, filter } = state.phonebook;
+  return {
+    contacts: getFilterName(contacts, filter),
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   onDelete: id => dispatch(actions.deleteContact(id)),
