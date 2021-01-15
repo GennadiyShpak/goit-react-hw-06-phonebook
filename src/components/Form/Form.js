@@ -1,5 +1,7 @@
+import { connect } from 'react-redux';
 import { Component } from 'react';
 
+import actions from '../../redux/phone-book/phonebook-actions';
 import s from './Form.module.css';
 
 const INITIAL_STATE = {
@@ -65,4 +67,8 @@ class Form extends Component {
   }
 }
 
-export default Form;
+const mapDispatchToProps = dispatch => ({
+  onSubmit: text => dispatch(actions.addContact(text)),
+});
+
+export default connect(null, mapDispatchToProps)(Form);

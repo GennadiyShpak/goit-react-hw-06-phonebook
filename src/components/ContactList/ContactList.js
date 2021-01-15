@@ -1,10 +1,12 @@
-import React from 'react';
+import { connect } from 'react-redux';
 
 import propTypes from 'prop-types';
 
 import s from './Contats.module.css';
+import actions from '../../redux/phone-book/phonebook-actions';
 
-function ContactList({ contacts, onDelete }) {
+function ContactList({ contacts }, onDelete) {
+  console.log(onDelete);
   if (contacts.length === 0) {
     return null;
   }
@@ -15,11 +17,7 @@ function ContactList({ contacts, onDelete }) {
           <p>
             {name}: {number}
           </p>
-          <button
-            type="button"
-            onClick={() => onDelete(id)}
-            className={s.contactBtn}
-          >
+          <button type="button" onClick={onDelete} className={s.contactBtn}>
             Delete
           </button>
         </li>
@@ -33,4 +31,12 @@ ContactList.propTypes = {
   onDelete: propTypes.func.isRequired,
 };
 
-export default ContactList;
+const mapStateToProps = state => ({
+  contacts: state.phonebook.contacts,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onDelete: id => dispatch(actions.deleteContact(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
