@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/homework-06-phonebootemplate/static/css/main.f16599dc.chunk.css",
+    "main.js": "/homework-06-phonebootemplate/static/js/main.bd2fd115.chunk.js",
+    "main.js.map": "/homework-06-phonebootemplate/static/js/main.bd2fd115.chunk.js.map",
+    "runtime-main.js": "/homework-06-phonebootemplate/static/js/runtime-main.2f74f905.js",
+    "runtime-main.js.map": "/homework-06-phonebootemplate/static/js/runtime-main.2f74f905.js.map",
+    "static/js/2.ce2511b5.chunk.js": "/homework-06-phonebootemplate/static/js/2.ce2511b5.chunk.js",
+    "static/js/2.ce2511b5.chunk.js.map": "/homework-06-phonebootemplate/static/js/2.ce2511b5.chunk.js.map",
+    "static/js/3.20c19d5e.chunk.js": "/homework-06-phonebootemplate/static/js/3.20c19d5e.chunk.js",
+    "static/js/3.20c19d5e.chunk.js.map": "/homework-06-phonebootemplate/static/js/3.20c19d5e.chunk.js.map",
+    "index.html": "/homework-06-phonebootemplate/index.html",
+    "static/css/main.f16599dc.chunk.css.map": "/homework-06-phonebootemplate/static/css/main.f16599dc.chunk.css.map",
+    "static/js/2.ce2511b5.chunk.js.LICENSE.txt": "/homework-06-phonebootemplate/static/js/2.ce2511b5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2f74f905.js",
+    "static/js/2.ce2511b5.chunk.js",
+    "static/css/main.f16599dc.chunk.css",
+    "static/js/main.bd2fd115.chunk.js"
+  ]
+}
