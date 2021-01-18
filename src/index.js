@@ -11,7 +11,7 @@ import storeObj from './redux/store';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={storeObj.store}>
-      <PersistGate loading={null} persistor={storeObj.persistor}>
+      <PersistGate loading={'Loading...'} persistor={storeObj.persistor}>
         <App />
       </PersistGate>
     </Provider>

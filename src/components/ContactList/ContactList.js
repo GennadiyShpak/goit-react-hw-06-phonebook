@@ -1,11 +1,15 @@
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import propTypes from 'prop-types';
+import { getFilterName } from '../../redux/phone-book/phonebook-selector';
 
 import s from './Contats.module.css';
 import actions from '../../redux/phone-book/phonebook-actions';
 
-function ContactList({ contacts, onDelete }) {
+function ContactList() {
+  const contacts = useSelector(getFilterName);
+  const dispatch = useDispatch();
+  const onDelete = id => dispatch(actions.deleteContact(id));
+
   if (contacts.length === 0) {
     return null;
   }
@@ -31,24 +35,4 @@ function ContactList({ contacts, onDelete }) {
   );
 }
 
-ContactList.propTypes = {
-  contacts: propTypes.arrayOf(propTypes.object).isRequired,
-  onDelete: propTypes.func.isRequired,
-};
-
-const getFilterName = (contacts, filter) => {
-  const normalizedName = filter.toLowerCase();
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedName),
-  );
-};
-
-const mapStateToProps = ({ phonebook: { contacts, filter } }) => ({
-  contacts: getFilterName(contacts, filter),
-});
-
-const mapDispatchToProps = dispatch => ({
-  onDelete: id => dispatch(actions.deleteContact(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+export default ContactList;
