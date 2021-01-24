@@ -1,8 +1,8 @@
 {
-  "name": "homework-06-phonebootemplate",
+  "name": "goit-react-hw-06-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://GennadiyShpak.github.io/react-template",
+  "homepage": "https://gennadiyshpak.github.io/goit-react-hw-06-phonebook/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.6",

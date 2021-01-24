@@ -1,25 +1,27 @@
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import actions from '../../redux/phone-book/phonebook-actions';
 import s from './Form.module.css';
 
 const Form = () => {
-  const [state, setState] = useState();
+  const [contact, setContact] = useState();
   const { register, handleSubmit, reset } = useForm();
 
   const dispatch = useDispatch();
-  const onSubmit = text => dispatch(actions.addContact(text));
+  const onSubmit = useCallback(data => dispatch(actions.addContact(data)), [
+    dispatch,
+  ]);
 
   const oninputHandler = ({ target }) => {
     const { name, value } = target;
-    setState(state => ({ ...state, [name]: value }));
+    setContact(contacts => ({ ...contacts, [name]: value }));
   };
 
   const onSubmitHandler = () => {
-    const { name, number } = state;
-    !name || !number ? alert(`Some field are empty`) : onSubmit(state);
+    const { name, number } = contact;
+    !name || !number ? alert(`Some field are empty`) : onSubmit(contact);
     reset();
   };
 
